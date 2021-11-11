@@ -4,11 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_baseline_calendar_24.xml" value="0.2703125" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2703125" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/calendar_cell.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag1.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag2.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag3.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag4.xml" value="0.25416666666666665" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragment_calendar.xml" value="0.11927083333333334" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragment_tab.xml" value="0.25416666666666665" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragnebt_tab.xml" value="0.25416666666666665" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_calendar_header.xml" value="0.25416666666666665" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_day.xml" value="0.25416666666666665" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_day_empty.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
       </map>
     </option>

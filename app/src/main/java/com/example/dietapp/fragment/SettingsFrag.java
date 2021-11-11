@@ -1,4 +1,4 @@
-package com.example.dietapp;
+package com.example.dietapp.fragment;
 
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import com.example.dietapp.R;
+
 // activity of settings page
 // 환경설정 액티비티
-public class Frag4 extends Fragment {
+public class SettingsFrag extends Fragment {
 
     private View view;
 
