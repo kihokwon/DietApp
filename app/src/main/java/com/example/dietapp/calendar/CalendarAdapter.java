@@ -96,6 +96,7 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             // view에 표시하기
             holder.bind(model);
         }
+
         /** 비어있는 날짜 타입 꾸미기 */
         /** EX : empty */
         else if (viewType == EMPTY_TYPE) {
@@ -103,6 +104,7 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             EmptyDay model = new EmptyDay();
             holder.bind(model);
         }
+
         /** 일자 타입 꾸미기 */
         /** EX : 22 */
         else if (viewType == DAY_TYPE) {
