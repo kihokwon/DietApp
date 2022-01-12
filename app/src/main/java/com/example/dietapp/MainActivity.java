@@ -2,6 +2,7 @@ package com.example.dietapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -60,26 +61,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFrag(int n){
-        fm = getSupportFragmentManager();
-        ft = fm.beginTransaction();
         switch(n){
             case 0:
-                ft.replace(R.id.main_frame, homeFrag);
-                ft.commit();
+                replaceFragment(homeFrag);
                 break;
             case 1:
-                ft.replace(R.id.main_frame, dietsFrag);
-                ft.commit();
+                replaceFragment(dietsFrag);
                 break;
             case 2:
-                ft.replace(R.id.main_frame, calendarFrag);
-                ft.commit();
+                replaceFragment(calendarFrag);
                 break;
             case 3:
-                ft.replace(R.id.main_frame, settingsFrag);
-                ft.commit();
+                replaceFragment(settingsFrag);
                 break;
         }
+    }
+
+    public void replaceFragment(Fragment fragment) {
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        ft.replace(R.id.main_frame, fragment).commit();
+
     }
 }
 
