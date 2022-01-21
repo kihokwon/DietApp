@@ -16,13 +16,21 @@
             android:value="ca-app-pub-5882705571450608~2417399957"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".login.RegisterActivity">
+
+        </activity>
+
+        <activity android:name=".MainActivity">
+
         </activity>
 
     </application>

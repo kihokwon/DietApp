@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19270833333333334" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/edge.xml" value="0.1" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.19270833333333334" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.19270833333333334" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_baseline_calendar_24.xml" value="0.2703125" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.19270833333333334" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2703125" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19270833333333334" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/calendar_cell.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/dialog_age.xml" value="0.2" />
@@ -14,12 +19,15 @@
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag3.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag4.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragment_calendar.xml" value="0.264" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragment_diets.xml" value="0.1765625" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragment_settings.xml" value="0.2" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragment_tab.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/fragnebt_tab.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_calendar_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_day.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_day_empty.xml" value="0.25416666666666665" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/login.xml" value="0.1" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/register.xml" value="0.13020833333333334" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/settings_profile.xml" value="0.264" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/settings_total.xml" value="0.1" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/settings_total_manual.xml" value="0.2" />
