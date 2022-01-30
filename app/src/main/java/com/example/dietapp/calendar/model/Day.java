@@ -1,7 +1,6 @@
 package com.example.dietapp.calendar.model;
 
 import com.example.dietapp.calendar.util.DateUtil;
-
 import java.util.Calendar;
 
 public class Day extends ViewModel {
@@ -25,7 +24,5 @@ public class Day extends ViewModel {
         day = DateUtil.getDate(calendar.getTimeInMillis(), DateUtil.DAY_FORMAT);
 
     }
-
-
 
 }
