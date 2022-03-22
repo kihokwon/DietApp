@@ -1,4 +1,4 @@
-package com.example.dbtest;
+package com.example.dietapp.database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

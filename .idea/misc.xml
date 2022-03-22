@@ -13,7 +13,9 @@
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19270833333333334" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/calendar_cell.xml" value="0.25416666666666665" />
-        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/dialog_age.xml" value="0.2" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/dialog_age.xml" value="0.1" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/dialog_food.xml" value="0.15307971014492755" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/dialog_search.xml" value="0.2" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag1.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag2.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/frag3.xml" value="0.25416666666666665" />
@@ -26,8 +28,10 @@
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_calendar_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_day.xml" value="0.25416666666666665" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/item_day_empty.xml" value="0.25416666666666665" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/listview_layout.xml" value="0.1743659420289855" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/login.xml" value="0.1" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/register.xml" value="0.13020833333333334" />
+        <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/row_listvview.xml" value="0.15307971014492755" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/settings_profile.xml" value="0.264" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/settings_total.xml" value="0.1" />
         <entry key="..\:/Development/AndroidStudio/DietApp/app/src/main/res/layout/settings_total_manual.xml" value="0.2" />

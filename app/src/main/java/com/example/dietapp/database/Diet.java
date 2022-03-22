@@ -1,4 +1,4 @@
-package com.example.dbtest;
+package com.example.dietapp.database;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -41,6 +41,19 @@ public class Diet {
     private String source;
     // 발행기관
     private String issuer;
+
+    public Diet() {
+
+    }
+
+    public Diet(int no, String foodName, int kcal, int protein, int fat, int cal){
+        this.no = no;
+        this.foodName = foodName;
+        this.kcal = kcal;
+        this.protein = protein;
+        this.fat = fat;
+        this.cal = cal;
+    }
 
     public int getNo() {
         return no;

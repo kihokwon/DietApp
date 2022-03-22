@@ -6,14 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.dietapp.database.User;
-import com.example.dietapp.database.UserDao;
 import com.example.dietapp.database.UserDatabase;
 import com.example.dietapp.fragment.HomeFrag;
 import com.example.dietapp.fragment.DietsFrag;
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private CalendarFrag calendarFrag;
     private SettingsFrag settingsFrag;
     // db
-    private UserDao mUserDao;
+//    private UserDao mUserDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
         // 내부 데이터베이스
         // 얘를 일단 MainActivity로 해놨는데 DB로 생성되는 걸 확인함.
-        UserDatabase database = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "dietapp_db")
-                .fallbackToDestructiveMigration() // 스키마(db) 버전 변경 가능
-                .allowMainThreadQueries() // Main Thread에서 DB에 io(입출력)을 가능하게 함.
-                .build();
-        mUserDao = database.userDao();
+//        UserDatabase database = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "dietapp_db")
+//                .fallbackToDestructiveMigration() // 스키마(db) 버전 변경 가능
+//                .allowMainThreadQueries() // Main Thread에서 DB에 io(입출력)을 가능하게 함.
+//                .build();
+//        mUserDao = database.userDao();
 
         // insert data
 //        User user = new User(); // 객체 인스턴스 생성
@@ -85,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
 //        mUserDao.setInsertUser(user);
 
         // select data
-        List<User> userList = mUserDao.getUserAll();
-        for (int i = 0; i < userList.size(); i++) {
-            Log.d("TEST", userList.get(i).getName() + "\n"
-            + userList.get(i).getAge() + "\n"
-            + userList.get(i).getPhoneNumber() + "\n");
-        }
+//        List<User> userList = mUserDao.getUserAll();
+//        for (int i = 0; i < userList.size(); i++) {
+//            Log.d("TEST", userList.get(i).getName() + "\n"
+//            + userList.get(i).getAge() + "\n"
+//            + userList.get(i).getPhoneNumber() + "\n");
+//        }
 
         // delete data
 //        User user2 = new User();
