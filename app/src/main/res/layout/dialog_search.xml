@@ -30,7 +30,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -38,15 +37,14 @@
             android:id="@+id/editSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="식사를 입력하세요."/>
+            android:hint="식사를 입력하세요." />
 
         <ListView
             android:id="@+id/search_result"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="#999999"
-            android:dividerHeight="1dp">
-        </ListView>
+            android:dividerHeight="1dp"></ListView>
 
 
     </LinearLayout>

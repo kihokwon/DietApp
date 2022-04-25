@@ -40,8 +40,6 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
     private int fat=10;
     private int carbo=5;
 
-
-
     private TextView btn_morning;
     private TextView btn_lunch;
     private TextView btn_dinner;

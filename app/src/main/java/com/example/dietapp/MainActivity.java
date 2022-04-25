@@ -1,18 +1,15 @@
 package com.example.dietapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.room.Room;
 
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,12 +24,11 @@ import com.example.dietapp.fragment.CalendarFrag;
 import com.example.dietapp.fragment.SettingsFrag;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private CalendarFrag calendarFrag;
     private SettingsFrag settingsFrag;
     // db
-    TextView testTextView;
-    Button file_btn;
     // asset Manager
     AssetManager assetManager;
     // database
@@ -88,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
         setFrag(0);
 
         // Inner Database
-        testTextView = findViewById(R.id.et_id);
-        file_btn = findViewById(R.id.file_btn);
-
         // asset
         assetManager = getResources().getAssets();
         // database
@@ -101,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         mUserDao = database.dietDAO();
 
+        // start db file
+        mOnAssetData();
+
     }
 
     private void setFrag(int n){
@@ -110,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 1:
                 replaceFragment(dietsFrag);
+                // 우선 Diets Button 클릭시 db정보가 들어오도록 설정함. -> 이걸 로그인할 시 바로 진행되도록 바꿔야겠지?
+                //mOnAssetData(dietsFrag.getView());
                 break;
             case 2:
                 replaceFragment(calendarFrag);
@@ -129,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
     // database functions
 
-    public void mOnAssetData(View view){
+    public void mOnAssetData(){
         getDataFromAsset();
     }
 
@@ -172,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 // 내용 조회
+                //ArrayList<String> foodList = new ArrayList<>();
                 String text = "";
 //                String textText = Integer.toString(mUserDao.getUserAll().size());
                 Log.d("file_test", Arrays.toString(token));
@@ -181,17 +178,12 @@ public class MainActivity extends AppCompatActivity {
 //                            + dietList.get(i).getSubject() + " "
 //                            + dietList.get(i).getFoodName() +"\n");
                     // textview에 foodName만 나오게끔 처리.
+                    //foodList.add(dietList.get(i).getFoodName());
                     text += dietList.get(i).getFoodName() + "\n";
                 }
-                Log.d("test", text);
-                //내용 출력 // Bundle 써서 보냄.
-                Fragment resultFragment = new HomeFrag();
-                Bundle bd = new Bundle();
-                bd.putString("foodResult", text);
-                resultFragment.setArguments(bd);
-                // textText는 올바른 값이 나오는 반면, textView가 자꾸 null이 나옴.
-                //testTextView.setText(finalText);
-                //ActionButton(finalText);
+                //MainActivity -> HomeFrag
+                ActionButton(text);
+
             }
         }catch (IOException e){
             e.printStackTrace();
@@ -204,9 +196,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
     // transfer data to TextView
-    public void ActionButton(String text){
-        file_btn.setOnClickListener(v -> testTextView.setText(text));
+    public void ActionButton(String foodList){
+        Bundle bd = new Bundle();
+        bd.putString("foodResult", foodList);
+        settingsFrag.setArguments(bd);
+
     }
+//    // ArrayList를 쓴다면?
+//    public void ActionButton(ArrayList<String> foodList){
+//        Bundle bd = new Bundle();
+//        for(int i = 0; i < foodList.size(); i++){
+//            bd.putString("foodResult", foodList.get(i));
+//            settingsFrag.setArguments(bd);
+//        }
+//    }
 
 }
 //push test
