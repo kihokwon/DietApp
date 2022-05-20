@@ -43,7 +43,10 @@
         <entry key="..\:/Development/AndroidStudio/DietAppp/app/src/main/res/layout/search_listview_layout.xml" value="0.1" />
         <entry key="..\:/KihoKwon/DietApp/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/KihoKwon/DietApp/app/src/main/res/layout/dialog_food.xml" value="0.3703125" />
+        <entry key="..\:/KihoKwon/DietApp/app/src/main/res/layout/dialog_search.xml" value="0.33" />
         <entry key="..\:/KihoKwon/DietApp/app/src/main/res/layout/frag1.xml" value="0.3703125" />
+        <entry key="..\:/KihoKwon/DietApp/app/src/main/res/layout/fragment_diets.xml" value="0.20989583333333334" />
+        <entry key="..\:/KihoKwon/DietApp/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
       </map>
     </option>
   </component>

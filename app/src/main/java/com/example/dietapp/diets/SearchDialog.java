@@ -34,7 +34,6 @@ public class SearchDialog extends DialogFragment {
     private MyDialogListener myListener;
     private CustomAdapter adapter;
     private ListView listView;
-    private Activity activity;
 
     private ListView searchListView;
     private SearchAdapter searchAdapter;
@@ -64,8 +63,7 @@ public class SearchDialog extends DialogFragment {
     }
 
     @SuppressLint("ValidFragment")
-    public SearchDialog(Activity activity, List<Diet> foodlist ) {
-        this.activity = activity;
+    public SearchDialog(List<Diet> foodlist ) {
         this.foodlist = foodlist;
     }
 

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.dietapp.MainActivity;
@@ -28,13 +29,33 @@ public class SettingsFrag extends Fragment implements View.OnClickListener {
     private TextView btn_profile;
     private TextView btn_total;
     private TextView btn_logout;
+    private Button showFoodBtn;
+    private TextView showTextView;
+    // listView로 나타내야 하는데 MainActivity에서 String[] 데이터가 꼬임.
+    //private ListView listView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_settings,container,false);
-
         initView(view);
+
+        showFoodBtn = view.findViewById(R.id.showFoodBtn);
+        showTextView = view.findViewById(R.id.showTextView);
+        Bundle foodList = this.getArguments();
+
+        if(foodList != null){
+            showFoodBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("foodList Output Test");
+                    String result = foodList.getString("foodResult");
+                    //Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+                    showTextView.setText(result);
+                }
+            });
+        }
+
 
         return view;
     }
@@ -77,5 +98,8 @@ public class SettingsFrag extends Fragment implements View.OnClickListener {
 
         btn_logout=v.findViewById(R.id.logout);
         btn_logout.setOnClickListener(this);
+
+        showTextView = v.findViewById(R.id.showTextView);
+        showTextView.setOnClickListener(this);
     }
 }

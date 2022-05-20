@@ -45,6 +45,30 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_profile"
         tools:layout_editor_absoluteX="0dp" />
 
+    <Button
+        android:id="@+id/showFoodBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLICK"
+        app:layout_constraintTop_toBottomOf="@+id/btn_total"
+        tools:layout_editor_absoluteX="0dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/showTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="테스트 창입니다."
+        app:layout_constraintTop_toBottomOf="@+id/showFoodBtn"
+        tools:ignore="MissingConstraints" />
+
+<!--    <ListView-->
+<!--        android:id="@android:id/list"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/showTextView"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
     <TextView
         android:id="@+id/logout"
         android:layout_width="match_parent"
@@ -54,6 +78,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp"
         android:gravity="center"/>
+
+
 
 
 

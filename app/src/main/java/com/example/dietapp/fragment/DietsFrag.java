@@ -225,7 +225,7 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void openDialog(CustomAdapter adapter, ListView listView, ListView search) {
-        SearchDialog dialog = new SearchDialog(activity, foodList   );
+        SearchDialog dialog = new SearchDialog(foodList );
         dialog.setAdapter(adapter);
         dialog.setListView(listView);
         dialog.setOriginalFrag(this);
