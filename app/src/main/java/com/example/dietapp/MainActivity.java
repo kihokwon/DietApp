@@ -11,6 +11,7 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -33,6 +34,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 String text = "";
 //                String textText = Integer.toString(mUserDao.getUserAll().size());
                 Log.d("file_test", Arrays.toString(token));
-                List<Diet> dietList = mUserDao.getUserAll();
+                ArrayList<Diet> dietList = (ArrayList<Diet>) mUserDao.getUserAll();
                 for(int i = 0; i < dietList.size(); i++) {
 //                    Log.d("DietTableList", dietList.get(i).getNo() + " "
 //                            + dietList.get(i).getSubject() + " "
@@ -187,8 +189,12 @@ public class MainActivity extends AppCompatActivity {
                 //내용 출력 // Bundle 써서 보냄.
                 Fragment resultFragment = new HomeFrag();
                 Bundle bd = new Bundle();
-                bd.putString("foodResult", text);
+//                bd.putString("foodResult", text);
+                bd.putParcelableArrayList("foodResult", (ArrayList<Diet>) dietList);
                 resultFragment.setArguments(bd);
+                dietsFrag.setArguments(bd);
+                calendarFrag.setArguments(bd);
+                settingsFrag.setArguments(bd);
                 // textText는 올바른 값이 나오는 반면, textView가 자꾸 null이 나옴.
                 //testTextView.setText(finalText);
                 //ActionButton(finalText);

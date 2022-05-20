@@ -7,11 +7,12 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.io.Serializable;
 import java.util.List;
 
 // Data Access Object
 @Dao
-public interface DietDAO {
+public interface DietDAO  {
     // prevent to db unique key error
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void setInsertDiet(Diet diet);

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.dietapp.R;
@@ -14,14 +16,33 @@ import java.util.List;
 
 public class SearchAdapter extends BaseAdapter {
 
-    private Context context;
     private List<Diet> list;
-    private LayoutInflater inflate;
     private ViewHolder viewHolder;
+    ListView listView;
+    private SearchDialog dialog;
 
-    public SearchAdapter(List<Diet> list, Context context){
+    public SearchAdapter(SearchDialog dialog){
+        this.dialog = dialog;
+    }
+
+    public void setList(List<Diet> list) {
         this.list = list;
-        this.inflate = LayoutInflater.from(context);
+    }
+
+    public void addItem(Diet diet) {
+        list.add(diet);
+    }
+
+    public void setListView(ListView listView) {
+
+        this.listView = listView;
+        this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dialog.listUpdate((Diet)listView.getItemAtPosition(position));
+                dialog.dismiss();
+            }
+        });
     }
     @Override
     public int getCount() {
@@ -29,31 +50,27 @@ public class SearchAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
-        return null;
+    public Diet getItem(int i) {
+        return list.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
+        final Context context = viewGroup.getContext();
         if(convertView == null){
-            convertView = inflate.inflate(R.layout.listview_row,null);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.listview_row, viewGroup, false);
 
-            viewHolder = new ViewHolder();
-            viewHolder.label = (TextView) convertView.findViewById(R.id.row_label);
-
-            convertView.setTag(viewHolder);
-        }else{
-            viewHolder = (ViewHolder)convertView.getTag();
         }
-
-        // 리스트에 있는 데이터를 리스트뷰 셀에 뿌린다.
-        viewHolder.label.setText((CharSequence) list.get(position));
-
+        TextView foodView = (TextView) convertView.findViewById(R.id.row_label);
+        Diet diet = getItem(position);
+        foodView.setText(diet.getFoodName());
+        // 리스트에 있는 데이터를 리스트뷰 셀에 뿌린다.        
         return convertView;
     }
 

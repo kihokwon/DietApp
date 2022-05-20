@@ -28,22 +28,7 @@ import java.util.List;
 @SuppressLint("ValidFragment")
 public class SearchDialog extends DialogFragment {
 
-    private Diet[] diets = {
-            new Diet(1,"불고기",101,10,10,10),
-            new Diet(2,"파스타",102,10,10,10),
-            new Diet(3,"햄버거",103,10,10,10),
-            new Diet(4,"계란밥",104,10,10,10),
-            new Diet(5,"돈까스",105,10,10,10)
-    };
-
-    private String[] dietsNames = {
-            new String("불고기"),
-            new String("파스타"),
-            new String("햄버거"),
-            new String("계란밥"),
-            new String("돈까스")
-    };
-
+    private List<Diet> foodlist;
     private List<Diet> searchlist;
     private EditText editSearch;
     private MyDialogListener myListener;
@@ -79,8 +64,9 @@ public class SearchDialog extends DialogFragment {
     }
 
     @SuppressLint("ValidFragment")
-    public SearchDialog(Activity activity) {
+    public SearchDialog(Activity activity, List<Diet> foodlist ) {
         this.activity = activity;
+        this.foodlist = foodlist;
     }
 
     @Override
@@ -89,7 +75,6 @@ public class SearchDialog extends DialogFragment {
         super.onCreate(savedInstanceState);
 
         try {
-
             myListener = (MyDialogListener) getTargetFragment();
 
         } catch (ClassCastException e) {
@@ -111,10 +96,6 @@ public class SearchDialog extends DialogFragment {
         builder.setView(inflater.inflate(R.layout.dialog_search, null)).setPositiveButton("SAVE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        adapter.addItem("계란밥",123, 10, 100, 50, 1);
-                        listView.setAdapter(adapter);
-                        originalFrag.computeNutrients(123, 10, 100, 50, 1);
-                        DietsFrag.setListViewHeightBasedOnChildren(listView);
                     }
 
                 }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -129,7 +110,9 @@ public class SearchDialog extends DialogFragment {
         searchlist = new ArrayList<>();
         editSearch = alert.findViewById(R.id.editSearch);
         searchListView = alert.findViewById(R.id.search_result);
-        searchAdapter = new SearchAdapter(searchlist, activity);
+        searchAdapter = new SearchAdapter(this);
+        searchAdapter.setListView(searchListView);
+
 
 
         editSearch.addTextChangedListener(new TextWatcher() {
@@ -157,7 +140,13 @@ public class SearchDialog extends DialogFragment {
 
     }
 
+    public void listUpdate(Diet diet) {
+                        adapter.addItem(diet);
+                        listView.setAdapter(adapter);
+                        originalFrag.computeNutrients(diet.getKcal(), diet.getProtein(), diet.getCal(), diet.getFat(), diet.getSugar());
+                        DietsFrag.setListViewHeightBasedOnChildren(listView);
 
+    }
 
 
     // 검색을 수행하는 메소드
@@ -168,23 +157,25 @@ public class SearchDialog extends DialogFragment {
         System.out.println(123);
         // 문자 입력이 없을때는 모든 데이터를 보여준다.
         if (charText.length() == 0) {
-            searchlist.addAll(Arrays.asList(diets));
+            searchlist.addAll(foodlist);
         }
         // 문자 입력을 할때..
         else
         {
             // 리스트의 모든 데이터를 검색한다.
-            for(int i = 0;i < diets.length; i++)
+            for(int i = 0;i < foodlist.size(); i++)
             {
                 // arraylist의 모든 데이터에 입력받은 단어(charText)가 포함되어 있으면 true를 반환한다.
-                if (dietsNames[i].toLowerCase().contains(charText))
+                if (foodlist.get(i).getFoodName().toLowerCase().contains(charText))
                 {
                     // 검색된 데이터를 리스트에 추가한다.
-                    searchlist.add(diets[i]);
+                    searchlist.add(foodlist.get(i));
                 }
             }
         }
         // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
-        adapter.notifyDataSetChanged();
+        searchAdapter.setList(searchlist);
+        searchListView.setAdapter(searchAdapter);
+        searchAdapter.notifyDataSetChanged();
     }
 }

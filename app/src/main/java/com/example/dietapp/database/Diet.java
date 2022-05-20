@@ -1,10 +1,15 @@
 package com.example.dietapp.database;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Diet {
+public class Diet implements Serializable, Parcelable {
     // autoGenerate = true 고유 id value
     @PrimaryKey(autoGenerate = false)
     // NO
@@ -54,6 +59,38 @@ public class Diet {
         this.fat = fat;
         this.cal = cal;
     }
+
+    protected Diet(Parcel in) {
+        no = in.readInt();
+        subject = in.readString();
+        foodName = in.readString();
+        year = in.readInt();
+        region = in.readString();
+        volume = in.readInt();
+        unit = in.readString();
+        kcal = in.readInt();
+        protein = in.readInt();
+        fat = in.readInt();
+        cal = in.readInt();
+        sugar = in.readInt();
+        na = in.readInt();
+        chol = in.readInt();
+        SFat = in.readInt();
+        source = in.readString();
+        issuer = in.readString();
+    }
+
+    public static final Creator<Diet> CREATOR = new Creator<Diet>() {
+        @Override
+        public Diet createFromParcel(Parcel in) {
+            return new Diet(in);
+        }
+
+        @Override
+        public Diet[] newArray(int size) {
+            return new Diet[size];
+        }
+    };
 
     public int getNo() {
         return no;
@@ -189,5 +226,31 @@ public class Diet {
 
     public void setIssuer(String issuer) {
         this.issuer = issuer;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(no);
+        dest.writeString(subject);
+        dest.writeString(foodName);
+        dest.writeInt(year);
+        dest.writeString(region);
+        dest.writeInt(volume);
+        dest.writeString(unit);
+        dest.writeInt(kcal);
+        dest.writeInt(protein);
+        dest.writeInt(fat);
+        dest.writeInt(cal);
+        dest.writeInt(sugar);
+        dest.writeInt(na);
+        dest.writeInt(chol);
+        dest.writeInt(SFat);
+        dest.writeString(source);
+        dest.writeString(issuer);
     }
 }

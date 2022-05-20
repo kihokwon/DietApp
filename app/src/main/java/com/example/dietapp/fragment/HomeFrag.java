@@ -27,6 +27,7 @@ public class HomeFrag extends Fragment {
         Bundle foodList = this.getArguments();
         if(foodList != null){
             //foodList = getArguments();
+            System.out.println("foodlist");
             String result = foodList.getString("foodResult");
 
             Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();

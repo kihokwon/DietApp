@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -27,7 +28,10 @@ import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 import org.w3c.dom.Text;
 
+import com.example.dietapp.database.Diet;
 import com.example.dietapp.diets.*;
+
+import java.util.ArrayList;
 
 // activity of adding/searching diets page
 // 식단 추가/검색 페이지 액티비티
@@ -40,7 +44,7 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
     private int fat=10;
     private int carbo=5;
 
-
+    private ArrayList<Diet> foodList;
 
     private TextView btn_morning;
     private TextView btn_lunch;
@@ -69,6 +73,7 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
     ListView listview_lunch;
     ListView listview_dinner;
     ListView listview_snacks;
+    ListView listview_search;
 
     CustomAdapter adapter_breakfast;
     CustomAdapter adapter_lunch;
@@ -85,6 +90,17 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_diets,container,false);
         initView(view);
+        Bundle bundle = this.getArguments();
+        System.out.println("Diet Frag");
+        if (bundle != null) {
+            System.out.println("foodlist");
+            foodList = bundle.getParcelableArrayList("foodResult");
+            for (int i=0; i<10; i++) {
+                System.out.println(foodList.get(i).getFoodName());
+            }
+        } else {
+            System.out.println("food list failed");
+        }
         return view;
     }
 
@@ -124,6 +140,7 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
         listview_lunch = v.findViewById(R.id.lunches);
         listview_dinner = v.findViewById(R.id.dinners);
         listview_snacks = v.findViewById(R.id.snacks);
+        listview_search = v.findViewById(R.id.search_result);
 
         adapter_breakfast = new CustomAdapter();
         adapter_breakfast.setListView(listview_breakfast);
@@ -168,16 +185,16 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btn_breakfast:
-                openDialog(adapter_breakfast, listview_breakfast);
+                openDialog(adapter_breakfast, listview_breakfast, listview_search);
                 break;
             case R.id.btn_lunch:
-                openDialog(adapter_lunch,listview_lunch);
+                openDialog(adapter_lunch,listview_lunch, listview_search);
                 break;
             case R.id.btn_dinner:
-                openDialog(adapter_dinner, listview_dinner);
+                openDialog(adapter_dinner, listview_dinner, listview_search);
                 break;
             case R.id.btn_snack:
-                openDialog(adapter_snacks, listview_snacks);
+                openDialog(adapter_snacks, listview_snacks, listview_search);
                 break;
             case R.id.btn_result:
                 calculate();
@@ -207,8 +224,8 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void openDialog(CustomAdapter adapter, ListView listView) {
-        SearchDialog dialog = new SearchDialog(activity);
+    private void openDialog(CustomAdapter adapter, ListView listView, ListView search) {
+        SearchDialog dialog = new SearchDialog(activity, foodList   );
         dialog.setAdapter(adapter);
         dialog.setListView(listView);
         dialog.setOriginalFrag(this);
