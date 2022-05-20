@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         // asset
         assetManager = getResources().getAssets();
         // database
+        // Room에서 기본적으로 Main Thread에서 접근할 수 없지만, allowMainThreadQueries를 사용해 만든 instance
+        //에서는
         DietDatabase database = Room.databaseBuilder(getApplicationContext(),
                 DietDatabase.class, "DietApp.db")
                 .fallbackToDestructiveMigration()
@@ -202,14 +204,5 @@ public class MainActivity extends AppCompatActivity {
         settingsFrag.setArguments(bd);
 
     }
-//    // ArrayList를 쓴다면?
-//    public void ActionButton(ArrayList<String> foodList){
-//        Bundle bd = new Bundle();
-//        for(int i = 0; i < foodList.size(); i++){
-//            bd.putString("foodResult", foodList.get(i));
-//            settingsFrag.setArguments(bd);
-//        }
-//    }
-
 }
 //push test
