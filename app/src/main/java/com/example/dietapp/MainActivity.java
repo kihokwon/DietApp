@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
-        mUserDao = database.dietDAO();
 
+        mUserDao = database.dietDAO();
         // start db file
         mOnAssetData();
 

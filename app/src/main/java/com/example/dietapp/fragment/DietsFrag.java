@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.room.Room;
 
 import com.example.dietapp.R;
 
@@ -29,9 +30,13 @@ import org.eazegraph.lib.models.PieModel;
 import org.w3c.dom.Text;
 
 import com.example.dietapp.database.Diet;
+import com.example.dietapp.database.DietDatabase;
+import com.example.dietapp.database.Record;
 import com.example.dietapp.diets.*;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Date;
 
 // activity of adding/searching diets page
 // 식단 추가/검색 페이지 액티비티
@@ -39,10 +44,10 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
 
     private View view;
     private Activity activity;
-    private int glyco=10;
-    private int protein=10;
-    private int fat=10;
-    private int carbo=5;
+    private int glyco=0;
+    private int protein=0;
+    private int fat=0;
+    private int carbo=0;
 
     private ArrayList<Diet> foodList;
 
@@ -251,7 +256,7 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
         setPieChart();
     }
 
-    public String calculate() {
+    public void calculate() {
         double goal_fat = goal_kcal*0.2/9;
         double gap_fat= Math.abs((goal_fat - fat)/goal_fat);
         double goal_pro = 0;
@@ -274,16 +279,45 @@ public class DietsFrag extends DialogFragment implements View.OnClickListener{
         double goal_carbo = (goal_kcal*0.8 - goal_pro*4)/4;
         double gap_carbo = Math.abs((goal_carbo - carbo)/goal_carbo);
 
-        if(gap_fat<=0.05 && gap_carbo<=0.05 && gap_pro<=0.05) {
-            return ("perfect");
-        } else if(gap_fat<=0.1 && gap_carbo<=0.1 && gap_pro<=0.1) {
-            return ("very good");
-        } else if(gap_fat<=0.15 && gap_carbo<=0.15 && gap_pro<=0.15) {
-            return ("good");
-        } else if(gap_fat<=0.2 && gap_carbo<=0.2 && gap_pro<=0.2) {
-            return ("not bad");
-        } else {
-            return "bad";
+        Date date = new Date();
+        long timeInMilliSeconds = date.getTime();
+        java.sql.Date date1 = new java.sql.Date(timeInMilliSeconds);
+
+        String breakfast="";
+        for (int i=0; i<listview_breakfast.getCount(); i++) {
+            breakfast += (((Diet) listview_breakfast.getItemAtPosition(i)).getFoodName());
         }
+        System.out.println("breakfast : ");
+        System.out.println(breakfast);
+
+        String lunch="";
+        for (int i=0; i<listview_lunch.getCount(); i++) {
+            breakfast += (((Diet) listview_lunch.getItemAtPosition(i)).getFoodName());
+        }
+        String dinner="";
+        for (int i=0; i<listview_dinner.getCount(); i++) {
+            breakfast += (((Diet) listview_dinner.getItemAtPosition(i)).getFoodName());
+        }
+        String snacks="";
+        for (int i=0; i<listview_snacks.getCount(); i++) {
+            breakfast += (((Diet) listview_snacks.getItemAtPosition(i)).getFoodName());
+        }
+        String result="";
+        if(gap_fat<=0.05 && gap_carbo<=0.05 && gap_pro<=0.05) {
+            result = "perfect";
+        } else if(gap_fat<=0.1 && gap_carbo<=0.1 && gap_pro<=0.1) {
+            result ="very good";
+        } else if(gap_fat<=0.15 && gap_carbo<=0.15 && gap_pro<=0.15) {
+            result = "good";
+        } else if(gap_fat<=0.2 && gap_carbo<=0.2 && gap_pro<=0.2) {
+            result = "not bad";
+        } else {
+            result = "bad";
+        }
+
+        Record record = new Record(date1, breakfast, lunch, dinner, snacks, current_kcal, carbo, protein, fat, result);
+
+
+        //record dao로 지금 만들어진 record를 db에 넣어주면 될듯
     }
 }
